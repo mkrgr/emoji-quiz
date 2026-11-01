@@ -1,0 +1,12 @@
+Titel: Filme
+# Format: Emojis,Hinweis,Antwort   (Zeilen mit # werden ignoriert)
+📚✨🚂🏰🔮👦⚡,Junge mit Zauberkräften,Harry Potter und der Stein der Weisen
+🚢🧊💔🎻,Ein Schiff, das als unsinkbar galt,Titanic
+🦁👑🌅🐗🐒,Ein junger Löwe wird König,Der König der Löwen
+🦖🦕🏝️🧬🚙,Ein Park mit urzeitlichen Bewohnern,Jurassic Park
+👽📞🏠🚲🌕,Ein Außerirdischer will nach Hause telefonieren,E.T. – Der Außerirdische
+🐠🔍🌊🐢,Ein Vater sucht seinen Sohn im Ozean,Findet Nemo
+❄️👸⛄🏰,Zwei Schwestern und ewiger Winter,Die Eiskönigin
+🧸🤠🚀👦,Spielzeug erwacht zum Leben,Toy Story
+💍🌋🧙‍♂️🧝🗡️,Ein Ring muss zerstört werden,Der Herr der Ringe
+🕷️🧑🏙️🕸️,Ein Teenager wird von einer Spinne gebissen,Spider-Man

@@ -1,0 +1,32 @@
+Titel: Länder
+# Format: Emojis,Hinweis,Antwort   (Zeilen mit # werden ignoriert)
+🍕🍝🛵🏛️🥾,Auf der Landkarte sieht es aus wie ein Stiefel,Italien
+🥖🧀🗼🥐,Baguette und Eiffelturm,Frankreich
+💃🥘🐂☀️,Flamenco und Paella,Spanien
+🔺🐫🏜️🐍,Pharaonen und der Nil,Ägypten
+🦘🐨🏄🪃,Ein ganzer Kontinent als Land,Australien
+🐼🥢🧱🐉,Die längste Mauer der Welt,China
+🍣🗻🌸🥋,Land der aufgehenden Sonne,Japan
+🍔🗽🦅🎆,50 Bundesstaaten,USA
+🍁🫎🏒🐻,Ein Ahornblatt ist auf der Flagge,Kanada
+⚽🦜🌴🎭☕,Der Amazonas fließt hier und es wurde fünfmal Fußballweltmeister,Brasilien
+🌮🌵🪅👒,Sombreros und Tacos,Mexiko
+🐘🍛🕌🧘,Das Taj Mahal steht hier,Indien
+🪆❄️🐻🏰,Das flächenmäßig größte Land der Welt,Russland
+🏛️🫒🏺⚡,Zeus und die ersten Olympischen Spiele,Griechenland
+🌷🧀🚲🌬️,Windmühlen und Tulpenfelder,Niederlande
+🏔️🧀🍫⌚🐄,Käse mit Löchern und genaue Uhren,Schweiz
+🎿🎻🍰🏔️,Mozart wurde hier geboren,Österreich
+🐟🏔️⛵🌌,Fjorde und Nordlichter,Norwegen
+🫎🛋️👑🍪,Ein Möbelhaus aus diesem Land kennt jeder,Schweden
+☕👑💂‍♂️🌧️,Tee um fünf und der König,Großbritannien
+🍀🌈🪙🎻,Kobolde und ein Topf voll Gold am Ende des Regenbogens,Irland
+🦁🦒🏃‍♂️🌍,Safari und weltberühmte Langstreckenläufer,Kenia
+🥩💃⚽🐄,Tango und Messis Heimat,Argentinien
+🦙🏔️🏯🐻,Machu Picchu – und ein bekannter Bär stammt von hier,Peru
+🐘🛕🍜🏝️,Tempel und Traumstrände in Südostasien,Thailand
+🌋🧊♨️🐴,Vulkane und Geysire im hohen Norden,Island
+🥝🐑🏉🧝,Hier wurde Der Herr der Ringe gedreht,Neuseeland
+🕌🥙☕🎈,Döner und Heißluftballons über Kappadokien,Türkei
+🧱🧜‍♀️🚲👑,Hier wurden die LEGO-Steine erfunden,Dänemark
+🥨🚗⚽🏰,Brezeln und Autobahnen ohne Tempolimit,Deutschland

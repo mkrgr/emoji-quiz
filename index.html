@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Emoji-Quiz</title>
+<style>
+  :root {
+    --bg: #fff8ef;
+    --card: #ffffff;
+    --ink: #2b2118;
+    --muted: #6e6053;
+    --accent: #c8431a;
+    --accent-ink: #ffffff;
+    --hint: #fff1c2;
+    --ok: #23794a;
+    --bad: #c0392b;
+    --line: #f0e3d3;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1c1712;
+      --card: #2a231c;
+      --ink: #f6ece1;
+      --muted: #a8998a;
+      --hint: #4a3d1a;
+      --line: #3b3128;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--ink);
+    font: 17px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 24px 16px;
+  }
+  main { width: 100%; max-width: 640px; }
+  h1 { font-size: 2rem; margin: 0 0 4px; text-align: center; }
+  h2 { font-size: 1.15rem; margin: 28px 0 10px; }
+  .sub { text-align: center; color: var(--muted); margin: 0 0 28px; }
+  .hidden { display: none !important; }
+
+  /* Kategorien */
+  .cats { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+  .cat {
+    background: var(--card); border: 2px solid var(--line); border-radius: 16px;
+    padding: 18px; text-align: left; cursor: pointer; color: inherit; font: inherit;
+    transition: transform .1s, border-color .1s;
+  }
+  .cat:hover { transform: translateY(-2px); border-color: var(--accent); }
+  .cat b { display: block; font-size: 1.15rem; }
+  .cat span { color: var(--muted); font-size: .9rem; }
+  .cat.all { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+  .cat.all span { color: inherit; opacity: .85; }
+  .opts { margin-top: 18px; text-align: center; color: var(--muted); line-height: 2.2; }
+  .opts select {
+    font: inherit; padding: 2px 6px; border-radius: 8px; border: 2px solid var(--line);
+    background: var(--card); color: var(--ink);
+  }
+
+  /* Teams */
+  .panel { background: var(--card); border-radius: 16px; padding: 16px; }
+  .panel p { margin: 0 0 12px; color: var(--muted); font-size: .9rem; }
+  .team-row { display: flex; gap: 8px; align-items: center; margin-bottom: 8px; }
+  .team-row input[type=text] {
+    flex: 1; min-width: 0; font: inherit; padding: 8px 12px; border-radius: 10px;
+    border: 2px solid var(--line); background: var(--bg); color: var(--ink);
+  }
+  .team-row input[type=color] { width: 44px; height: 40px; border: 0; padding: 0; background: none; cursor: pointer; }
+  .icon-btn { background: none; border: 0; font-size: 1.2rem; cursor: pointer; color: var(--muted); padding: 4px 8px; }
+
+  /* Quiz */
+  .bar { display: flex; justify-content: space-between; align-items: center; color: var(--muted); font-size: .95rem; margin-bottom: 10px; }
+  .link { background: none; border: 0; color: var(--muted); cursor: pointer; font: inherit; text-decoration: underline; padding: 0; }
+  .progress { height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; margin-bottom: 12px; }
+  .progress div { height: 100%; background: var(--accent); width: 0; transition: width .3s; }
+  .scoreboard { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 14px; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 999px;
+    background: var(--card); font-size: .9rem; font-weight: 600; border: 2px solid var(--line);
+  }
+  .dot { width: 12px; height: 12px; border-radius: 50%; flex: none; }
+  .card {
+    background: var(--card); border-radius: 24px; padding: 28px 20px;
+    box-shadow: 0 6px 24px rgba(0,0,0,.06); text-align: center;
+  }
+  .tag { display: inline-block; font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-bottom: 10px; }
+  .emojis { font-size: clamp(2.4rem, 9vw, 3.6rem); line-height: 1.3; word-break: break-word; margin: 6px 0 22px; }
+  .hint, .answer { border-radius: 14px; padding: 12px 16px; margin: 0 0 14px; animation: pop .25s ease-out; }
+  .hint { background: var(--hint); }
+  .answer { font-size: 1.4rem; font-weight: 700; border: 2px dashed var(--accent); }
+  @keyframes pop { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: none; } }
+  .btns { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+  .award-label { color: var(--muted); font-size: .9rem; margin: 4px 0 10px; }
+  button.b {
+    font: inherit; font-weight: 600; border: 0; border-radius: 12px; padding: 12px 18px;
+    cursor: pointer; background: var(--line); color: var(--ink);
+  }
+  button.b.primary { background: var(--accent); color: var(--accent-ink); }
+  button.b.ok { background: var(--ok); color: #fff; }
+  button.b.bad { background: var(--bad); color: #fff; }
+  button.b:disabled { opacity: .4; cursor: default; }
+  button.team-pick {
+    font: inherit; font-weight: 600; border-radius: 12px; padding: 10px 16px; cursor: pointer;
+    background: var(--card); color: var(--ink); border: 3px solid var(--tc);
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  button.team-pick.on { background: var(--tc); color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,.35); }
+  button.team-pick .dot { background: var(--tc); box-shadow: 0 0 0 2px var(--card); }
+  .keys { text-align: center; color: var(--muted); font-size: .8rem; margin-top: 14px; }
+
+  /* Ergebnis / Ranglisten */
+  .big { font-size: 4rem; }
+  .tabs { display: flex; gap: 6px; justify-content: center; margin: 18px 0 10px; }
+  .tabs button { font: inherit; border: 0; border-radius: 999px; padding: 6px 14px; cursor: pointer; background: var(--line); color: var(--ink); }
+  .tabs button.on { background: var(--accent); color: var(--accent-ink); }
+  table.rank { width: 100%; border-collapse: collapse; text-align: left; margin: 0 0 18px; }
+  table.rank th { font-size: .8rem; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .05em; padding: 6px 8px; }
+  table.rank td { padding: 10px 8px; border-top: 1px solid var(--line); }
+  table.rank td.num, table.rank th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  table.rank td.pos { width: 2.5em; font-weight: 700; }
+  table.rank .name { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; }
+  .empty { color: var(--muted); font-size: .9rem; margin: 0 0 18px; }
+  .err { background: var(--card); border: 2px solid var(--bad); border-radius: 16px; padding: 18px; }
+  .err code { background: var(--line); padding: 1px 6px; border-radius: 6px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>🤔 Emoji-Quiz</h1>
+  <p class="sub">Welcher Film, welches Märchen, welche Person steckt hinter den Emojis?</p>
+
+  <!-- Startbildschirm -->
+  <section id="start">
+    <h2>Teams</h2>
+    <div class="panel">
+      <p>Ohne Teams spielst du allein (gewusst / nicht gewusst). Mit Teams bekommt das Team den Punkt, das die Lösung zuerst errät.</p>
+      <div id="teamList"></div>
+      <button class="b" id="addTeam">+ Team hinzufügen</button>
+    </div>
+
+    <h2>Kategorie wählen</h2>
+    <div id="cats" class="cats"></div>
+    <div class="opts">
+      <label>Fragen pro Runde:
+        <select id="perRound">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+          <option value="30">30</option>
+          <option value="0">Alle</option>
+        </select>
+      </label>
+      · <label><input type="checkbox" id="shuffle" checked> Fragen mischen</label>
+      ·<button class="link" id="showAlltime">🏆 Alltime-Rangliste</button>
+    </div>
+  </section>
+
+  <!-- Fallback, wenn die Dateien nicht automatisch geladen werden können -->
+  <section id="fallback" class="hidden">
+    <div class="err">
+      <p><b>Die Fragedateien konnten nicht automatisch geladen werden.</b></p>
+      <p>Browser erlauben das Laden von Dateien meist nur über einen Webserver. Starte im Projektordner z.&nbsp;B.
+        <code>python3 -m http.server</code> und öffne <code>http://localhost:8000</code>.</p>
+      <p>Oder wähle die <code>.txt</code>-Dateien hier direkt aus:</p>
+      <input type="file" id="filepick" accept=".txt" multiple>
+    </div>
+  </section>
+
+  <!-- Quiz -->
+  <section id="quiz" class="hidden">
+    <div class="bar">
+      <button class="link" id="back">← Kategorien</button>
+      <span id="count"></span>
+      <span id="score"></span>
+    </div>
+    <div class="progress"><div id="prog"></div></div>
+    <div class="scoreboard" id="scoreboard"></div>
+    <div class="card">
+      <div class="tag" id="qcat"></div>
+      <div class="emojis" id="qemoji"></div>
+      <div class="hint hidden" id="qhint"></div>
+      <div class="answer hidden" id="qanswer"></div>
+      <div class="btns" id="askBtns">
+        <button class="b" id="btnHint">💡 Hinweis</button>
+        <button class="b primary" id="btnSolve">Lösung zeigen</button>
+      </div>
+      <!-- Solo -->
+      <div class="btns hidden" id="rateBtns">
+        <button class="b ok" id="btnRight">✓ Gewusst</button>
+        <button class="b bad" id="btnWrong">✗ Nicht gewusst</button>
+      </div>
+      <!-- Teams -->
+      <div class="hidden" id="awardBox">
+        <div class="award-label">Wer bekommt den Punkt? (bei Gleichstand mehrere wählen)</div>
+        <div class="btns" id="teamPicks"></div>
+        <div class="btns" style="margin-top:14px">
+          <button class="b primary" id="btnNext">Weiter →</button>
+        </div>
+      </div>
+    </div>
+    <div class="keys" id="keys"></div>
+  </section>
+
+  <!-- Ergebnis -->
+  <section id="result" class="hidden">
+    <div class="card">
+      <div class="big" id="rEmoji"></div>
+      <h2 id="rText" style="margin-top:0"></h2>
+      <p id="rDetail" style="color:var(--muted)"></p>
+
+      <div id="rankBox" class="hidden">
+        <div class="tabs">
+          <button id="tabGame" class="on">Dieses Spiel</button>
+          <button id="tabAll">Alltime</button>
+        </div>
+        <div id="rankGame"></div>
+        <div id="rankAll" class="hidden"></div>
+      </div>
+
+      <div class="btns">
+        <button class="b primary" id="again">Nochmal</button>
+        <button class="b" id="home">Andere Kategorie</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Alltime-Rangliste (vom Startbildschirm aus) -->
+  <section id="alltime" class="hidden">
+    <div class="card">
+      <div class="big">🏆</div>
+      <h2 style="margin-top:0">Alltime-Rangliste</h2>
+      <div id="rankAll2"></div>
+      <div class="btns">
+        <button class="b" id="alltimeBack">← Zurück</button>
+        <button class="b bad" id="alltimeReset">Rangliste löschen</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+const FRAGEN_ORDNER = 'fragen/';
+const INDEX_DATEI = 'kategorien.txt';
+const TEAM_COLORS = ['#e4572e', '#2e86de', '#2f9e5b', '#9b59b6', '#f39c12', '#e84393', '#16a085', '#34495e'];
+
+let categories = [];   // [{title, questions:[{emoji, hint, answer, cat}]}]
+let teams = [];        // [{name, color}]
+let current = null;    // {questions, idx, right, wrong, source, forceShuffle, teams, scores, picked}
+
+const $ = id => document.getElementById(id);
+
+// --- Speicher (localStorage, fehlertolerant) ---------------------------------
+function load(key, fallback) {
+  try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch { return fallback; }
+}
+function save(key, value) {
+  try { localStorage.setItem(key, JSON.stringify(value)); } catch {}
+}
+
+// --- Textdatei einlesen ------------------------------------------------------
+// Erste Zeile "Titel: ..." legt den Kategorienamen fest.
+// Jede weitere Zeile: Emojis,Hinweis,Antwort
+// Emojis = bis zum ersten Komma, Antwort = nach dem letzten Komma,
+// der Hinweis dazwischen darf also selbst Kommas enthalten.
+function parseFile(text, fallbackTitle) {
+  let title = fallbackTitle;
+  const questions = [];
+  for (const raw of text.split(/\r?\n/)) {
+    const line = raw.trim();
+    if (!line || line.startsWith('#')) continue;
+    const t = line.match(/^Titel\s*:\s*(.+)$/i);
+    if (t) { title = t[1].trim(); continue; }
+    const first = line.indexOf(',');
+    const last = line.lastIndexOf(',');
+    if (first === -1) continue;
+    const emoji = line.slice(0, first).trim();
+    const answer = (first === last ? line.slice(first + 1) : line.slice(last + 1)).trim();
+    const hint = first === last ? '' : line.slice(first + 1, last).trim();
+    if (emoji && answer) questions.push({ emoji, hint, answer, cat: title });
+  }
+  return { title, questions };
+}
+
+async function loadFromServer() {
+  const idx = await fetch(FRAGEN_ORDNER + INDEX_DATEI, { cache: 'no-cache' }).then(r => {
+    if (!r.ok) throw new Error(r.status);
+    return r.text();
+  });
+  const files = idx.split(/\r?\n/).map(s => s.trim()).filter(s => s && !s.startsWith('#'));
+  const loaded = await Promise.all(files.map(async f => {
+    try {
+      const r = await fetch(FRAGEN_ORDNER + f, { cache: 'no-cache' });
+      if (!r.ok) throw new Error(r.status);
+      return parseFile(await r.text(), f.replace(/\.txt$/i, ''));
+    } catch (e) {
+      console.warn('Konnte nicht laden:', f, e);
+      return null;
+    }
+  }));
+  return loaded.filter(c => c && c.questions.length);
+}
+
+// --- Ansichten ---------------------------------------------------------------
+function show(id) {
+  for (const s of ['start', 'fallback', 'quiz', 'result', 'alltime']) $(s).classList.toggle('hidden', s !== id);
+}
+
+function renderCategories() {
+  const box = $('cats');
+  box.innerHTML = '';
+  const total = categories.reduce((n, c) => n + c.questions.length, 0);
+  const mk = (cls, title, n, onClick) => {
+    const b = document.createElement('button');
+    b.className = 'cat ' + cls;
+    b.innerHTML = `<b></b><span>${n} Fragen</span>`;
+    b.querySelector('b').textContent = title;
+    b.onclick = onClick;
+    box.appendChild(b);
+  };
+  if (categories.length > 1) mk('all', '🎲 Alle gemischt', total, () => startQuiz(categories.flatMap(c => c.questions), true));
+  for (const c of categories) mk('', c.title, c.questions.length, () => startQuiz(c.questions));
+  renderTeamList();
+  show('start');
+}
+
+// --- Teams verwalten ---------------------------------------------------------
+function renderTeamList() {
+  const box = $('teamList');
+  box.innerHTML = '';
+  teams.forEach((t, i) => {
+    const row = document.createElement('div');
+    row.className = 'team-row';
+    row.innerHTML = `<input type="color" aria-label="Teamfarbe"><input type="text" placeholder="Teamname" aria-label="Teamname"><button class="icon-btn" title="Team entfernen" aria-label="Team entfernen">✕</button>`;
+    const [color, name, del] = row.children;
+    color.value = t.color;
+    name.value = t.name;
+    color.oninput = () => { t.color = color.value; save('emojiquiz.teams', teams); };
+    name.oninput = () => { t.name = name.value; save('emojiquiz.teams', teams); };
+    del.onclick = () => { teams.splice(i, 1); save('emojiquiz.teams', teams); renderTeamList(); };
+    box.appendChild(row);
+  });
+}
+
+$('addTeam').onclick = () => {
+  const used = new Set(teams.map(t => t.color));
+  const color = TEAM_COLORS.find(c => !used.has(c)) || TEAM_COLORS[teams.length % TEAM_COLORS.length];
+  teams.push({ name: `Team ${teams.length + 1}`, color });
+  save('emojiquiz.teams', teams);
+  renderTeamList();
+  const inputs = $('teamList').querySelectorAll('input[type=text]');
+  inputs[inputs.length - 1].select();
+};
+
+function activeTeams() {
+  return teams.map((t, i) => ({ name: t.name.trim() || `Team ${i + 1}`, color: t.color }));
+}
+
+// --- Quiz --------------------------------------------------------------------
+function shuffle(a) {
+  a = a.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function startQuiz(questions, forceShuffle = false) {
+  const limit = +$('perRound').value;
+  let qs = (forceShuffle || $('shuffle').checked) ? shuffle(questions) : questions.slice();
+  if (limit) qs = qs.slice(0, limit);
+  const ts = activeTeams();
+  current = {
+    questions: qs, idx: 0, right: 0, wrong: 0, source: questions, forceShuffle,
+    teams: ts, scores: ts.map(() => 0), picked: new Set(),
+  };
+  $('keys').textContent = ts.length
+    ? `Tastatur: H = Hinweis · Leertaste = Lösung · 1–${Math.min(ts.length, 9)} = Team wählen · Enter = weiter`
+    : 'Tastatur: H = Hinweis · Leertaste = Lösung · J / N = gewusst / nicht gewusst';
+  show('quiz');
+  renderQuestion();
+}
+
+function renderScoreboard() {
+  const box = $('scoreboard');
+  box.innerHTML = '';
+  current.teams.forEach((t, i) => {
+    const c = document.createElement('span');
+    c.className = 'chip';
+    c.innerHTML = `<span class="dot"></span><span></span><span></span>`;
+    c.children[0].style.background = t.color;
+    c.children[1].textContent = t.name;
+    c.children[2].textContent = current.scores[i];
+    box.appendChild(c);
+  });
+}
+
+function renderQuestion() {
+  const { questions, idx, right, teams: ts } = current;
+  const q = questions[idx];
+  $('count').textContent = `Frage ${idx + 1} / ${questions.length}`;
+  $('score').textContent = ts.length ? '' : `✓ ${right}`;
+  $('prog').style.width = (idx / questions.length * 100) + '%';
+  renderScoreboard();
+  $('qcat').textContent = q.cat;
+  $('qemoji').textContent = q.emoji;
+  $('qhint').textContent = '💡 ' + q.hint;
+  $('qanswer').textContent = q.answer;
+  $('qhint').classList.add('hidden');
+  $('qanswer').classList.add('hidden');
+  $('btnHint').disabled = !q.hint;
+  $('askBtns').classList.remove('hidden');
+  $('rateBtns').classList.add('hidden');
+  $('awardBox').classList.add('hidden');
+}
+
+function showHint() {
+  if (!$('btnHint').disabled) $('qhint').classList.remove('hidden');
+}
+
+function solve() {
+  $('qanswer').classList.remove('hidden');
+  $('askBtns').classList.add('hidden');
+  if (current.teams.length) {
+    current.picked = new Set();
+    renderTeamPicks();
+    $('awardBox').classList.remove('hidden');
+  } else {
+    $('rateBtns').classList.remove('hidden');
+  }
+}
+
+function renderTeamPicks() {
+  const box = $('teamPicks');
+  box.innerHTML = '';
+  current.teams.forEach((t, i) => {
+    const b = document.createElement('button');
+    b.className = 'team-pick' + (current.picked.has(i) ? ' on' : '');
+    b.style.setProperty('--tc', t.color);
+    b.setAttribute('aria-pressed', current.picked.has(i));
+    b.innerHTML = `<span class="dot"></span><span></span>`;
+    b.children[1].textContent = t.name;
+    b.onclick = () => togglePick(i);
+    box.appendChild(b);
+  });
+  $('btnNext').textContent = current.picked.size ? 'Punkt vergeben →' : 'Niemand – weiter →';
+}
+
+function togglePick(i) {
+  current.picked.has(i) ? current.picked.delete(i) : current.picked.add(i);
+  renderTeamPicks();
+}
+
+function awardAndNext() {
+  for (const i of current.picked) current.scores[i]++;
+  nextQuestion();
+}
+
+function rate(ok) {
+  ok ? current.right++ : current.wrong++;
+  nextQuestion();
+}
+
+function nextQuestion() {
+  current.idx++;
+  if (current.idx < current.questions.length) renderQuestion();
+  else showResult();
+}
+
+// --- Ranglisten --------------------------------------------------------------
+// Platz mit Gleichstand: gleiche Punkte → gleicher Platz (1, 1, 3 …)
+function withPositions(rows, key) {
+  rows.sort((a, b) => b[key] - a[key] || a.name.localeCompare(b.name));
+  rows.forEach((r, i) => { r.pos = i > 0 && rows[i - 1][key] === r[key] ? rows[i - 1].pos : i + 1; });
+  return rows;
+}
+
+function medal(pos) { return ['🥇', '🥈', '🥉'][pos - 1] || pos + '.'; }
+
+function rankTable(rows, cols) {
+  const table = document.createElement('table');
+  table.className = 'rank';
+  table.innerHTML = `<thead><tr><th></th><th>Team</th>${cols.map(c => `<th class="num">${c.label}</th>`).join('')}</tr></thead><tbody></tbody>`;
+  const tbody = table.querySelector('tbody');
+  for (const r of rows) {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td class="pos"></td><td><span class="name"><span class="dot"></span><span></span></span></td>${cols.map(() => '<td class="num"></td>').join('')}`;
+    tr.querySelector('.pos').textContent = medal(r.pos);
+    tr.querySelector('.dot').style.background = r.color;
+    tr.querySelector('.name span:last-child').textContent = r.name;
+    tr.querySelectorAll('td.num').forEach((td, i) => { td.textContent = cols[i].value(r); });
+    tbody.appendChild(tr);
+  }
+  return table;
+}
+
+function renderAlltime(box) {
+  box.innerHTML = '';
+  const all = load('emojiquiz.alltime', {});
+  const rows = Object.values(all);
+  if (!rows.length) {
+    box.innerHTML = '<p class="empty">Noch keine Team-Spiele gespielt.</p>';
+    return;
+  }
+  withPositions(rows, 'points');
+  box.appendChild(rankTable(rows, [
+    { label: 'Punkte', value: r => r.points },
+    { label: 'Siege', value: r => r.wins },
+    { label: 'Spiele', value: r => r.games },
+  ]));
+}
+
+// Teams werden über ihren Namen (ohne Groß-/Kleinschreibung) wiedererkannt.
+function recordAlltime() {
+  const all = load('emojiquiz.alltime', {});
+  const best = Math.max(...current.scores);
+  current.teams.forEach((t, i) => {
+    const key = t.name.toLowerCase();
+    const e = all[key] || { name: t.name, color: t.color, points: 0, wins: 0, games: 0 };
+    e.name = t.name;
+    e.color = t.color;
+    e.points += current.scores[i];
+    e.games++;
+    if (best > 0 && current.scores[i] === best) e.wins++;
+    all[key] = e;
+  });
+  save('emojiquiz.alltime', all);
+}
+
+function showResult() {
+  const { right, questions, teams: ts, scores } = current;
+
+  if (ts.length) {
+    recordAlltime();
+    const rows = withPositions(ts.map((t, i) => ({ ...t, points: scores[i] })), 'points');
+    const winners = rows.filter(r => r.pos === 1 && r.points > 0);
+    $('rEmoji').textContent = winners.length ? '🏆' : '🤷';
+    $('rText').textContent = !winners.length ? 'Kein Team hat gepunktet'
+      : winners.length === 1 ? `${winners[0].name} gewinnt!`
+      : `Gleichstand: ${winners.map(w => w.name).join(' & ')}`;
+    $('rDetail').textContent = `${questions.length} Fragen gespielt`;
+    $('rankGame').innerHTML = '';
+    $('rankGame').appendChild(rankTable(rows, [{ label: 'Punkte', value: r => r.points }]));
+    renderAlltime($('rankAll'));
+    selectTab('game');
+    $('rankBox').classList.remove('hidden');
+  } else {
+    const pct = right / questions.length;
+    $('rEmoji').textContent = pct === 1 ? '🏆' : pct >= .7 ? '🎉' : pct >= .4 ? '🙂' : '🙈';
+    $('rText').textContent = `${right} von ${questions.length} gewusst`;
+    $('rDetail').textContent = pct === 1 ? 'Perfekt – Emoji-Profi!' : pct >= .7 ? 'Stark!' : pct >= .4 ? 'Nicht schlecht!' : 'Beim nächsten Mal klappt’s besser.';
+    $('rankBox').classList.add('hidden');
+  }
+  show('result');
+}
+
+function selectTab(which) {
+  $('tabGame').classList.toggle('on', which === 'game');
+  $('tabAll').classList.toggle('on', which === 'all');
+  $('rankGame').classList.toggle('hidden', which !== 'game');
+  $('rankAll').classList.toggle('hidden', which !== 'all');
+}
+
+// --- Events ------------------------------------------------------------------
+$('btnHint').onclick = showHint;
+$('btnSolve').onclick = solve;
+$('btnRight').onclick = () => rate(true);
+$('btnWrong').onclick = () => rate(false);
+$('btnNext').onclick = awardAndNext;
+$('back').onclick = renderCategories;
+$('home').onclick = renderCategories;
+$('again').onclick = () => startQuiz(current.source, current.forceShuffle);
+$('tabGame').onclick = () => selectTab('game');
+$('tabAll').onclick = () => selectTab('all');
+$('showAlltime').onclick = () => { renderAlltime($('rankAll2')); show('alltime'); };
+$('alltimeBack').onclick = renderCategories;
+$('alltimeReset').onclick = () => {
+  if (confirm('Alltime-Rangliste wirklich löschen?')) {
+    save('emojiquiz.alltime', {});
+    renderAlltime($('rankAll2'));
+  }
+};
+
+document.addEventListener('keydown', e => {
+  if ($('quiz').classList.contains('hidden') || e.target.tagName === 'INPUT') return;
+  const k = e.key.toLowerCase();
+  const asking = !$('askBtns').classList.contains('hidden');
+  const awarding = !$('awardBox').classList.contains('hidden');
+  const rating = !$('rateBtns').classList.contains('hidden');
+  if (asking && k === 'h') showHint();
+  else if (asking && (k === ' ' || k === 'enter')) { e.preventDefault(); solve(); }
+  else if (rating && k === 'j') rate(true);
+  else if (rating && k === 'n') rate(false);
+  else if (awarding && /^[1-9]$/.test(k) && +k <= current.teams.length) togglePick(+k - 1);
+  else if (awarding && k === 'enter') { e.preventDefault(); awardAndNext(); }
+});
+
+$('filepick').onchange = async e => {
+  const files = [...e.target.files];
+  const loaded = await Promise.all(files.map(async f => parseFile(await f.text(), f.name.replace(/\.txt$/i, ''))));
+  categories = loaded.filter(c => c.questions.length);
+  if (categories.length) renderCategories();
+};
+
+// --- Start -------------------------------------------------------------------
+teams = load('emojiquiz.teams', []);
+$('perRound').value = String(load('emojiquiz.perRound', 10));
+$('perRound').onchange = () => save('emojiquiz.perRound', +$('perRound').value);
+
+loadFromServer()
+  .then(c => {
+    categories = c;
+    if (categories.length) renderCategories();
+    else show('fallback');
+  })
+  .catch(err => {
+    console.warn('Automatisches Laden fehlgeschlagen:', err);
+    show('fallback');
+  });
+</script>
+</body>
+</html>

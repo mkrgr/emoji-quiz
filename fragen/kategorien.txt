@@ -1,0 +1,8 @@
+# Liste der Fragedateien (eine pro Zeile). Neue Kategorie = neue .txt-Datei anlegen und hier eintragen.
+filme.txt
+maerchen.txt
+personen.txt
+kinderfilme.txt
+buecher.txt
+staedte.txt
+laender.txt

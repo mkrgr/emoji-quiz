@@ -1,0 +1,52 @@
+Titel: Kinderfilme
+# Format: Emojis,Hinweis,Antwort   (Zeilen mit # werden ignoriert)
+🟢👹🫏👸🏰,Ein grüner Oger und ein redseliger Esel,Shrek
+🦣🦥🐯🐿️🌰❄️,Ein Eichhörnchen jagt eine Nuss,Ice Age
+🏎️⚡9️⃣5️⃣🏁,Lightning McQueen,Cars
+🦁🦓🦒🦛🐧🏝️,Vier Zootiere stranden auf einer Insel,Madagascar
+🐀👨‍🍳🍲🇫🇷,Eine Ratte will Koch in Paris werden,Ratatouille
+🎈🎈🎈🏠👴👦🐕,Ein Haus fliegt mit Luftballons davon,Oben
+😀😢😡😱🤢🧠,Gefühle steuern Rileys Kopf,Alles steht Kopf
+💀🎸🌼🇲🇽👦,Miguel reist ins Land der Toten,Coco
+🌊🛶🐓🏝️🪝,Ein Mädchen segelt mit Halbgott Maui übers Meer,Vaiana
+🦋🏠🕯️🇨🇴✨,Alle in der Familie Madrigal haben eine Gabe – außer Mirabel,Encanto
+🐰👮‍♀️🦊🏙️,Eine Häsin wird Polizistin in der Tierstadt,Zoomania
+🟡👓🍌🦹‍♂️👧👧👧,Ein Superschurke adoptiert drei Mädchen,Ich – Einfach unverbesserlich
+👾😱🚪👧🟢👁️,Monster sammeln Kinderschreie als Energie,Die Monster AG
+🦸‍♂️🦸‍♀️👧👦👶🔴,Eine ganze Familie mit Superkräften,Die Unglaublichen
+🤖🌱🌍🚀💗,Ein kleiner Roboter räumt die Erde auf,WALL·E
+🐉🧑🦿⚫,Hicks und Ohnezahn,Drachenzähmen leicht gemacht
+🐼🥋🥟🐯,Ein tollpatschiger Bär wird Drachenkrieger,Kung Fu Panda
+🟢🎄🎁😠🐕,Er will Weihnachten stehlen,Der Grinch
+☂️👩🌬️🍬🧹,Ein Löffelchen voll Zucker,Mary Poppins
+🍫🎫🏭👦🎩,Ein goldenes Ticket,Charlie und die Schokoladenfabrik
+🦁🧙‍♀️🚪🧥❄️,Durch den Kleiderschrank in eine andere Welt,Die Chroniken von Narnia
+🐻🧳🍊🎩🇬🇧,Ein Bär aus Peru liebt Orangenmarmelade,Paddington
+👧💪🐴🐒🏡,Sie hebt ihr Pferd hoch und wohnt in der Villa Kunterbunt,Pippi Langstrumpf
+🔵👨🍄🏘️🧙‍♂️,Kleine blaue Wesen und der Zauberer Gargamel,Die Schlümpfe
+👦👑🌹🦊🪐,Man sieht nur mit dem Herzen gut,Der kleine Prinz
+🦌🐇🌸🌲,Ein junges Reh und sein Freund Klopfer,Bambi
+🐘👂👂🎪🪶,Ein kleiner Elefant fliegt mit seinen Ohren,Dumbo
+👦🐻🐯🐍🌴,Mogli wächst bei Tieren auf,Das Dschungelbuch
+🐶⚫⚪💯🧥,Cruella will einen Pelzmantel,101 Dalmatiner
+👩⚔️🐉🇨🇳,Sie verkleidet sich als Mann und zieht in den Krieg,Mulan
+🦍🌳🧑🌿🗣️,Ein Mann wächst bei Gorillas auf,Tarzan
+👧👽🔵🌺🏄,Ein Mädchen auf Hawaii adoptiert ein Alien,Lilo & Stitch
+👦⛵🪓🧠💡,Ein schlauer Wikingerjunge – Ich hab’s!,Wickie und die starken Männer
+🐝🌼🐝🌿,Eine Biene und ihr fauler Freund Willi,Die Biene Maja
+🐘🎺🏙️🦁,Törööö!,Benjamin Blümchen
+👧🧹✨🌙,Eene meene Mopel,Bibi Blocksberg
+👧👧🐴🐴🏡,Zwei Freundinnen und ihre Pferde Sabrina und Amadeus,Bibi & Tina
+🕵️🕵️🕵️❓❓❓,Drei Detektive aus Rocky Beach,Die drei ???
+🐨🎤🐷🦍🐭🎹,Ein Koala veranstaltet einen Gesangswettbewerb,Sing
+🐶🏙️🐰🏠😈,Was machen Haustiere wenn wir nicht da sind?,Pets
+👧🐴⚫🌬️,Mika und ein schwarzer Hengst,Ostwind
+⚽👦👦🧢🏆,Alles ist gut – solange du wild bist,Die wilden Kerle
+✈️🏫📚👦,Ein Internat und ein Theaterstück von Erich Kästner,Das fliegende Klassenzimmer
+👦💵🚂🕵️,Ein Junge wird im Zug bestohlen und jagt den Dieb,Emil und die Detektive
+👦🏿🚂🐉🏝️,Emma die Lokomotive und Lummerland,Jim Knopf und Lukas der Lokomotivführer
+📖🐉🤍👦🐎,Bastian liest ein Buch über Phantásien,Die unendliche Geschichte
+🧚‍♀️👦🏴‍☠️🐊⏰,Ein Junge der nie erwachsen wird,Peter Pan
+🍄👨‍🔧🐢👸⭐,Zwei Klempnerbrüder im Pilzkönigreich,Der Super Mario Bros. Film
+⛏️🟫🟩🧱🧟,Eine Welt aus Blöcken,Ein Minecraft Film
+👧🐇⏰🎩🫖🃏,Sie folgt einem Kaninchen in den Bau,Alice im Wunderland

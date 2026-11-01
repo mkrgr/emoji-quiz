@@ -1,0 +1,60 @@
+Titel: Personen
+# Format: Emojis,Hinweis,Antwort   (Zeilen mit # werden ignoriert)
+🍎⬇️🌳🧠,Schwerkraft,Isaac Newton
+💡🔌🇺🇸,Erfinder der Glühbirne (angeblich),Thomas Edison
+🧑‍🔬👅⏱️💡,E = mc²,Albert Einstein
+🎹🎼👂🔇,Komponist, der taub wurde,Ludwig van Beethoven
+🖼️😊👩‍🎨🇮🇹,Malte die Mona Lisa,Leonardo da Vinci
+🚀🌕👨‍🚀👣,Erster Mensch auf dem Mond,Neil Armstrong
+⛵🌍🥚🇪🇸,Entdeckte 1492 Amerika (für Europa),Christoph Kolumbus
+👑🐍🏛️🇪🇬,Letzte Pharaonin Ägyptens,Kleopatra
+👦🎹🎼🇦🇹🍬,Wunderkind aus Salzburg – nach ihm sind Kugeln benannt,Wolfgang Amadeus Mozart
+🐫🧭🇮🇹➡️🇨🇳,Reiste im Mittelalter bis nach China,Marco Polo
+🔭🌍🔄☀️,Und sie bewegt sich doch!,Galileo Galilei
+🐢🏝️🐦🐒🧬,Erforschte auf den Galápagosinseln die Entstehung der Arten,Charles Darwin
+👩‍🔬☢️🏅🏅,Die erste Frau mit einem Nobelpreis – und gleich zwei davon,Marie Curie
+👑🇫🇷⚔️🎩🤏,Kaiser der Franzosen mit dem Zweispitz,Napoleon Bonaparte
+🏛️🗡️👑🇮🇹,Ich kam – ich sah – ich siegte,Julius Caesar
+👦👑⚱️🏜️🎭,Junger Pharao mit goldener Totenmaske,Tutanchamun
+📜🔨🚪⛪,Schlug 95 Thesen an eine Kirchentür,Martin Luther
+📖🖨️🔠⚙️,Erfand den Buchdruck mit beweglichen Buchstaben,Johannes Gutenberg
+👨👨🛩️🇺🇸,Zwei Brüder bauten das erste Motorflugzeug,Die Gebrüder Wright
+🕺🌙🧤🎤,King of Pop mit dem Moonwalk,Michael Jackson
+🎭💀📜🇬🇧,Sein oder Nichtsein – das ist hier die Frage,William Shakespeare
+👨👨📚🐺👧,Zwei Brüder sammelten Märchen,Die Brüder Grimm
+🧜‍♀️🦆🇩🇰✍️,Dänischer Märchendichter,Hans Christian Andersen
+🎩🦯👞🎬⬛⬜,Stummfilmstar mit Melone und Spazierstock,Charlie Chaplin
+🐭🏰🎬✏️,Erfand eine berühmte Maus,Walt Disney
+🍎📱💻👓,Gründete eine Firma mit Obst im Logo,Steve Jobs
+👧🌍🔥📢🏫,Begann mit einem Schulstreik fürs Klima,Greta Thunberg
+✊💭🗣️🇺🇸,I have a dream,Martin Luther King
+🇿🇦⛓️🕊️👴,27 Jahre im Gefängnis – danach Präsident,Nelson Mandela
+🇮🇳👓🕊️🚶,Kämpfte ohne Gewalt für Indiens Freiheit,Mahatma Gandhi
+👑🐕🫖🇬🇧👵,Liebte Corgis und regierte 70 Jahre,Königin Elisabeth II.
+⚡🏃‍♂️🇯🇲🥇,Schnellster Mensch der Welt,Usain Bolt
+🏎️🏁🇩🇪7️⃣🏆,Siebenmal Formel-1-Weltmeister,Michael Schumacher
+⚽🇦🇷🔟🏆,Weltmeister 2022 mit der Nummer 10,Lionel Messi
+🎤🎸💖✨,Ihre Fans heißen Swifties,Taylor Swift
+🎨🟦🔺👁️🇪🇸,Malte Gesichter aus Ecken und Kanten,Pablo Picasso
+🌻👂🌌🎨🇳🇱,Malte Sonnenblumen und eine Sternennacht,Vincent van Gogh
+👑⚔️🇫🇷🇩🇪8️⃣0️⃣0️⃣,Wurde im Jahr 800 zum Kaiser gekrönt,Karl der Große
+⚡🪁🔑🇺🇸💵,Ließ einen Drachen im Gewitter steigen,Benjamin Franklin
+⚡🌩️🔌🚗,Eine Automarke trägt seinen Namen,Nikola Tesla
+🚗1️⃣🇩🇪👩,Baute das erste Automobil – seine Frau Bertha fuhr damit los,Carl Benz
+🚀🌍👨‍🚀🇷🇺1️⃣,Erster Mensch im Weltall,Juri Gagarin
+👩‍✈️✈️🌊❓,Flog als erste Frau allein über den Atlantik,Amelia Earhart
+🧭❄️🐧🚩,Erreichte als Erster den Südpol,Roald Amundsen
+🧑‍🦽🌌🕳️🧠,Erforschte Schwarze Löcher,Stephen Hawking
+🩻🦴📸👨‍🔬🇩🇪,Entdeckte Strahlen die durch den Körper schauen,Wilhelm Conrad Röntgen
+🎶⛪🎹🇩🇪👨‍🦳,Barock-Komponist aus Leipzig,Johann Sebastian Bach
+🎨⛪🗿🇮🇹🐢,Malte die Sixtinische Kapelle – und ist eine Ninja Turtle,Michelangelo
+🇺🇸🏛️🗳️👨🏾,Erster schwarzer Präsident der USA,Barack Obama
+🇩🇪👩‍💼🔷🏛️,16 Jahre Bundeskanzlerin,Angela Merkel
+👨‍🚀🇩🇪🛰️🌍,Deutscher Astronaut auf der ISS,Alexander Gerst
+👩🐒🌳🔭,Erforschte Schimpansen in Afrika,Jane Goodall
+🪽🧑⛰️🇩🇪,Flugpionier mit Gleitflügeln,Otto Lilienthal
+🌎🌋🧭🐧,Ein Pinguin und ein Meeresstrom tragen seinen Namen,Alexander von Humboldt
+🧤⚽🇩🇪🥅,Torwart der Nationalmannschaft,Manuel Neuer
+🎸🕺👑🎤,King of Rock ’n’ Roll,Elvis Presley
+👆⚫⚪📖👨‍🦯,Erfand eine Schrift zum Fühlen,Louis Braille
+👵✍️🇸🇪📚🐴,Schwedische Kinderbuchautorin,Astrid Lindgren

@@ -1,0 +1,32 @@
+Titel: Städte
+# Format: Emojis,Hinweis,Antwort   (Zeilen mit # werden ignoriert)
+🗼🥐🎨🖼️,Hier hängt die Mona Lisa,Paris
+🎡💂‍♂️🔔☕,Big Ben und die Tower Bridge,London
+🗽🍎🚕🏙️,Man nennt sie den Big Apple,New York
+🏛️🍕⚔️⛲,Gladiatoren kämpften im Kolosseum,Rom
+🛶🎭🌊🌉,Statt Straßen gibt es Kanäle,Venedig
+🐻🧱🚪🏛️,Hier stand früher eine Mauer mitten durch die Stadt,Berlin
+🥨🎡👗⚽,Hier findet das Oktoberfest statt,München
+⚓🚢🐟🌧️,Deutschlands größter Hafen,Hamburg
+⛪🎭🍬🎉,Hier rufen alle im Karneval Kölle Alaaf,Köln
+🏢↘️🍕,Ein berühmter Turm steht schief,Pisa
+🦘🎭🌉🏖️,Ihr Opernhaus sieht aus wie Segel,Sydney
+🍣🚄🏙️🌸,Hauptstadt mit über 30 Millionen Menschen im Großraum,Tokio
+⚽🏖️🙏🎭,Eine riesige Christusstatue schaut über die Stadt,Rio de Janeiro
+🐫🔺🔺🔺🏜️,Die Pyramiden von Gizeh liegen fast vor der Tür,Kairo
+🏰🧅❄️🟥,Bunte Zwiebeltürme am Roten Platz,Moskau
+🚲🌷🛶🧀,Grachten und Fahrräder überall,Amsterdam
+⚽🏖️⛪🏗️,Eine Kirche wird hier seit über 140 Jahren gebaut,Barcelona
+🌉🔴🚋🌫️,Die Golden Gate Bridge,San Francisco
+🎬⭐🌴🌄,Hollywood liegt hier,Los Angeles
+🏛️🦉🏃🫒,Die Akropolis thront über der Stadt,Athen
+🎡🎻🍰🐴,Riesenrad im Prater und Sachertorte,Wien
+🫏🐕🐈🐓🗿,Hier steht eine Statue aus vier Tieren aufeinander,Bremen
+🏦💶✈️🏙️,Wolkenkratzer und die Europäische Zentralbank,Frankfurt am Main
+🚗⭐🏎️🐴,Heimat von Mercedes-Benz und Porsche,Stuttgart
+🎄🍪🧸🏰,Lebkuchen und ein berühmter Christkindlesmarkt,Nürnberg
+🏛️🦅🏠⬜,Hier wohnt der Präsident der USA,Washington
+🐼🧱🏯🏮,Die Verbotene Stadt liegt hier,Peking
+🏙️📏🏜️🛍️,Hier steht das höchste Gebäude der Welt,Dubai
+🕌🌉🌍🌏,Eine Stadt auf zwei Kontinenten,Istanbul
+⛰️🐧🌊🦁,Am Fuß des Tafelbergs leben Pinguine,Kapstadt

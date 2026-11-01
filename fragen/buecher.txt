@@ -1,0 +1,32 @@
+Titel: Bücher
+# Format: Emojis,Hinweis,Antwort   (Zeilen mit # werden ignoriert)
+📓✏️👦😬🏫,Ein Junge schreibt alles auf – mit Strichmännchen,Gregs Tagebuch
+🏫🦊🐢✨🎒,In der Winterstein-Schule bekommen Kinder sprechende Tiere,Die Schule der magischen Tiere
+🧒🔵🔵🔵🎩📅,Es kommt an einem Samstag und erfüllt Wünsche mit Punkten,Das Sams
+🧙‍♀️🧹🐦‍⬛🔥📅,Sie ist erst 127 Jahre alt – viel zu jung für die Walpurgisnacht,Die kleine Hexe
+🧔🪓☕⚙️👦👦,Er klaut der Großmutter die Kaffeemühle,Der Räuber Hotzenplotz
+🐦‍⬛🏚️⚙️🧙‍♂️,Ein Junge lernt in einer Mühle schwarze Magie,Krabat
+👧⏰🐢🌸👔,Die grauen Herren stehlen den Menschen die Zeit,Momo
+👧👧🔄🏕️,Zwei Mädchen merken im Ferienlager: Wir sind Zwillinge!,Das doppelte Lottchen
+👧⛈️🏰⚡🌲,Sie wird in einer Gewitternacht auf einer Räuberburg geboren,Ronja Räubertochter
+👦🍲🪵🔨🇸🇪,Er sitzt im Tischlerschuppen und schnitzt Holzmännchen,Michel aus Lönneberga
+🦁❤️👦👦🐉,Zwei Brüder kämpfen in Nangijala gegen einen Drachen,Die Brüder Löwenherz
+📖❤️🖤🗣️,Wenn Mo vorliest – springen Figuren aus dem Buch,Tintenherz
+🧝💍🐉⛰️🏡,Bilbo Beutlin geht auf Abenteuerreise,Der kleine Hobbit
+🏝️🧔🦜👣📅,Gestrandet auf einer Insel – sein Freund heißt wie ein Wochentag,Robinson Crusoe
+🏴‍☠️🗺️🦜🦵💰,Long John Silver und eine Schatzkarte,Die Schatzinsel
+👦🖌️🪵🏞️🇺🇸,Er lässt andere für sich den Zaun streichen,Tom Sawyer
+🌍🎩🚂🚢8️⃣0️⃣,Phileas Fogg schließt eine Wette ab,In 80 Tagen um die Welt
+👧🏔️🐐👴🧀,Ein Mädchen lebt beim Großvater auf der Alm,Heidi
+🐭🌲👹🦊🦉🐍,Eine schlaue Maus erfindet ein Monster,Der Grüffelo
+🔱⚡🏛️👦🌊,Ein Junge erfährt dass sein Vater ein griechischer Gott ist,Percy Jackson
+🎭🇮🇹🛶🧒🧒,Straßenkinder in Venedig und ein geheimnisvoller Anführer,Herr der Diebe
+👦👦🐓🍞🌾😈,Ritzeratze! Zwei Lausbuben von Wilhelm Busch,Max und Moritz
+👦💅💇✂️🔥,Ein Junge der sich nie die Nägel schneidet,Der Struwwelpeter
+🐋⚪🦵⛵🔱,Kapitän Ahab jagt einen weißen Wal,Moby Dick
+🐊🏘️🚲👦,Eine Kinderbande mit einem Jungen im Rollstuhl,Die Vorstadtkrokodile
+👦🎭🏫❤️,Auggie kommt mit einem besonderen Gesicht in die Schule,Wunder
+👧📚🧠✨🏫,Ein schlaues Mädchen mit Zauberkräften gegen eine fiese Direktorin,Matilda
+🐷🕷️🕸️✍️,Eine Spinne webt Wörter um ein Schwein zu retten,Wilbur und Charlotte
+🐕🔥🌫️🕵️,Sherlock Holmes jagt einen Höllenhund im Moor,Der Hund von Baskerville
+👧👦💰🌉,Ein reiches Mädchen und ein armer Junge werden Freunde – von Erich Kästner,Pünktchen und Anton
