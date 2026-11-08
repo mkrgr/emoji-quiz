@@ -4,6 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Emoji-Quiz</title>
+<!-- Als App auf dem Home-Bildschirm (iPad/iPhone/Android): ohne Browser-Leisten -->
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Emoji-Quiz">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="theme-color" content="#fff8ef" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1c1712" media="(prefers-color-scheme: dark)">
 <style>
   :root {
     --bg: #fff8ef;
@@ -127,6 +136,38 @@
   .empty { color: var(--muted); font-size: .9rem; margin: 0 0 18px; }
   .err { background: var(--card); border: 2px solid var(--bad); border-radius: 16px; padding: 18px; }
   .err code { background: var(--line); padding: 1px 6px; border-radius: 6px; }
+
+  /* Quiz-Ansicht: großer Rätselbereich, wenig Rand */
+  .bar-right { display: inline-flex; gap: 14px; align-items: center; }
+  body[data-view=quiz] { padding: 10px 12px; }
+  body[data-view=quiz] main {
+    max-width: 1280px; display: flex; flex-direction: column;
+    min-height: calc(100vh - 20px); min-height: calc(100dvh - 20px);
+  }
+  body[data-view=quiz] main > h1, body[data-view=quiz] main > .sub { display: none; }
+  #quiz { flex: 1; display: flex; flex-direction: column; }
+  #quiz .card {
+    flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center;
+    padding: 20px 16px; border-radius: 20px;
+  }
+  #quiz .card > * { width: 100%; max-width: 1000px; }
+  #quiz .emojis { font-size: clamp(3rem, min(13vw, 20vh), 9rem); line-height: 1.25; margin: 4px 0 24px; }
+  #quiz .hint { font-size: clamp(1.05rem, 2.2vw, 1.7rem); }
+  #quiz .answer { font-size: clamp(1.4rem, 4.2vw, 3.2rem); }
+  #quiz .keys { margin-top: 8px; }
+
+  /* Präsentationsmodus (Vollbild) */
+  body.present[data-view=quiz] { padding: 8px; }
+  body.present[data-view=quiz] main { max-width: none; min-height: 100vh; min-height: 100dvh; }
+  body.present #quiz .bar, body.present #quiz .progress { margin-left: 8px; margin-right: 8px; }
+  body.present #quiz .card { box-shadow: none; border-radius: 16px; }
+  body.present #quiz .card > * { max-width: 1400px; }
+  body.present #quiz .emojis { font-size: clamp(4rem, min(17vw, 28vh), 18rem); }
+  body.present #quiz .hint { font-size: clamp(1.3rem, 2.8vw, 2.4rem); }
+  body.present #quiz .answer { font-size: clamp(1.8rem, 5vw, 4.5rem); }
+  body.present #quiz .chip { font-size: clamp(.9rem, 1.6vw, 1.4rem); }
+  body.present #quiz button.b, body.present #quiz button.team-pick { font-size: clamp(1rem, 1.6vw, 1.4rem); }
+  body.present #quiz .keys { display: none; }
 </style>
 </head>
 <body>
@@ -177,7 +218,10 @@
     <div class="bar">
       <button class="link" id="back">← Kategorien</button>
       <span id="count"></span>
-      <span id="score"></span>
+      <span class="bar-right">
+        <span id="score"></span>
+        <button class="link" id="present" title="Präsentationsmodus (F)">⛶ Präsentation</button>
+      </span>
     </div>
     <div class="progress"><div id="prog"></div></div>
     <div class="scoreboard" id="scoreboard"></div>
@@ -309,6 +353,37 @@ async function loadFromServer() {
 // --- Ansichten ---------------------------------------------------------------
 function show(id) {
   for (const s of ['start', 'fallback', 'quiz', 'result', 'alltime']) $(s).classList.toggle('hidden', s !== id);
+  document.body.dataset.view = id;
+}
+
+// --- Präsentationsmodus (Vollbild) -------------------------------------------
+// Die Klasse "present" sorgt für das große Layout; Vollbild kommt dazu, wo der
+// Browser es erlaubt (z. B. nicht auf dem iPhone).
+// Ältere iPadOS-/Safari-Versionen kennen die API nur mit "webkit"-Präfix.
+const fsElement = () => document.fullscreenElement || document.webkitFullscreenElement;
+function fsEnter() {
+  const el = document.documentElement;
+  try {
+    const p = el.requestFullscreen ? el.requestFullscreen() : el.webkitRequestFullscreen?.();
+    p?.catch?.(() => {});
+  } catch {}
+}
+function fsExit() {
+  try {
+    const p = document.exitFullscreen ? document.exitFullscreen() : document.webkitExitFullscreen?.();
+    p?.catch?.(() => {});
+  } catch {}
+}
+function setPresentation(on) {
+  document.body.classList.toggle('present', on);
+  if (on && !fsElement()) fsEnter();
+  if (!on && fsElement()) fsExit();
+  $('present').textContent = on ? '✕ Präsentation beenden' : '⛶ Präsentation';
+}
+for (const ev of ['fullscreenchange', 'webkitfullscreenchange']) {
+  document.addEventListener(ev, () => {
+    if (!fsElement() && document.body.classList.contains('present')) setPresentation(false);
+  });
 }
 
 function renderCategories() {
@@ -381,8 +456,8 @@ function startQuiz(questions, forceShuffle = false) {
     teams: ts, scores: ts.map(() => 0), picked: new Set(),
   };
   $('keys').textContent = ts.length
-    ? `Tastatur: H = Hinweis · Leertaste = Lösung · 1–${Math.min(ts.length, 9)} = Team wählen · Enter = weiter`
-    : 'Tastatur: H = Hinweis · Leertaste = Lösung · J / N = gewusst / nicht gewusst';
+    ? `Tastatur: H = Hinweis · Leertaste = Lösung · 1–${Math.min(ts.length, 9)} = Team wählen · Enter = weiter · F = Präsentation`
+    : 'Tastatur: H = Hinweis · Leertaste = Lösung · J / N = gewusst / nicht gewusst · F = Präsentation';
   show('quiz');
   renderQuestion();
 }
@@ -574,6 +649,7 @@ $('btnRight').onclick = () => rate(true);
 $('btnWrong').onclick = () => rate(false);
 $('btnNext').onclick = awardAndNext;
 $('back').onclick = renderCategories;
+$('present').onclick = e => { e.currentTarget.blur(); setPresentation(!document.body.classList.contains('present')); };
 $('home').onclick = renderCategories;
 $('again').onclick = () => startQuiz(current.source, current.forceShuffle);
 $('tabGame').onclick = () => selectTab('game');
@@ -593,7 +669,10 @@ document.addEventListener('keydown', e => {
   const asking = !$('askBtns').classList.contains('hidden');
   const awarding = !$('awardBox').classList.contains('hidden');
   const rating = !$('rateBtns').classList.contains('hidden');
-  if (asking && k === 'h') showHint();
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  if (k === 'f') setPresentation(!document.body.classList.contains('present'));
+  else if (k === 'escape' && document.body.classList.contains('present')) setPresentation(false);
+  else if (asking && k === 'h') showHint();
   else if (asking && (k === ' ' || k === 'enter')) { e.preventDefault(); solve(); }
   else if (rating && k === 'j') rate(true);
   else if (rating && k === 'n') rate(false);
